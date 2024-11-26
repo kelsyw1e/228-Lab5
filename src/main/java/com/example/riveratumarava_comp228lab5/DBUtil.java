@@ -26,7 +26,7 @@ public class DBUtil {
 
     public static void createOwnerTable() throws SQLException {
         dbConnect();
-        String sql = "CREATE TABLE Owner (ownerID INT PRIMARY KEY, name VARCHAR(100), address VARCHAR(200), phone VARCHAR(100), email VARCHAR(100))";
+        String sql = "CREATE TABLE Owner (ownerID INT PRIMARY KEY NOT NULL, name VARCHAR(100) NOT NULL, address VARCHAR(200) NOT NULL, phone VARCHAR(100) NOT NULL, email VARCHAR(100) NOT NULL)";
         statement.execute(sql);
         System.out.println("Owner table is created!:");
         if  (statement != null) statement.close();
@@ -35,7 +35,7 @@ public class DBUtil {
 
     public static void createCarTable() throws SQLException {
         dbConnect();
-        String sql = "CREATE TABLE Car (carID INT PRIMARY KEY, make VARCHAR(100), model VARCHAR(100), vin INT, buildYear INT, type VARCHAR(100))";
+        String sql = "CREATE TABLE Car (carID INT PRIMARY KEY NOT NULL, make VARCHAR(100) NOT NULL, model VARCHAR(100) NOT NULL, vin INT NOT NULL, buildYear INT NOT NULL, type VARCHAR(100) NOT NULL)";
         statement.execute(sql);
         System.out.println("Car table is created!:");
         if  (statement != null) statement.close();
@@ -45,7 +45,7 @@ public class DBUtil {
     // MISSING AUTO INCREMENT for repairID
     public static void createRepairTable() throws SQLException {
         dbConnect();
-        String sql = "CREATE TABLE Repair (repairID INT PRIMARY KEY, ownerID INT, carID INT, repairDate DATE, description VARCHAR(200), cost INT, CONSTRAINT fk_owner FOREIGN KEY (ownerID) REFERENCES Owner(ownerID), CONSTRAINT fk_car FOREIGN KEY (carID) REFERENCES Car(carID))";
+        String sql = "CREATE TABLE Repair (repairID INT PRIMARY KEY, ownerID INT NOT NULL, carID INT NOT NULL, repairDate DATE NOT NULL, description VARCHAR(200) NOT NULL, cost INT NOT NULL, CONSTRAINT fk_repair_owner FOREIGN KEY (ownerID) REFERENCES Owner(ownerID), CONSTRAINT fk_repair_car FOREIGN KEY (carID) REFERENCES Car(carID))";
         statement.execute(sql);
         System.out.println("Repair table is created!");
         if (statement != null) statement.close();
