@@ -9,18 +9,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<VBox alignment="CENTER" prefHeight="1000.0" prefWidth="600.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="com.example.riveratumarava_comp228lab5.HelloController">
+<VBox alignment="CENTER" prefHeight="900.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.riveratumarava_comp228lab5.HelloController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
    <children>
-      <Label text="Label" />
-      <GridPane>
+      <GridPane hgap="5.0" vgap="2.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="107.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="174.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="87.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="10.0" prefWidth="184.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -32,20 +31,20 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Label" />
-            <Label text="Label" GridPane.columnIndex="2" />
-            <Label text="Label" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.rowIndex="3" />
-            <Label text="Label" GridPane.rowIndex="4" />
-            <Label text="Label" GridPane.rowIndex="5" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Label text="Car Owner" />
+            <Label text="Car" GridPane.columnIndex="2" />
+            <Label text="Owner ID:" GridPane.rowIndex="1" />
+            <Label text="Name:" GridPane.rowIndex="2" />
+            <Label text="Address:" GridPane.rowIndex="3" />
+            <Label text="Phone Number:" GridPane.rowIndex="4" />
+            <Label text="Email:" GridPane.rowIndex="5" />
+            <Label text="Car ID:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="Make:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="Model:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Label text="VIN:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Label text="Build Year:" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label text="Type:" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <ComboBox prefHeight="25.0" prefWidth="172.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -58,30 +57,29 @@
             <TextField GridPane.columnIndex="3" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Button mnemonicParsing="false" text="Button" />
+      <Button mnemonicParsing="false" text="Add Owner &amp; Car" />
       <Separator prefHeight="0.0" prefWidth="560.0" />
-      <Label text="Label" />
-      <GridPane>
+      <Label text="Repair" />
+      <GridPane hgap="5.0" vgap="2.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="62.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="105.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="76.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.0" minWidth="10.0" prefWidth="126.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.0" minWidth="10.0" prefWidth="47.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="125.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Label" />
-            <Label text="Label" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.columnIndex="2" />
-            <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.columnIndex="4" />
-            <Label text="Label" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label text="Repair ID:" />
+            <Label text="Date:" GridPane.rowIndex="1" />
+            <Label text="Owner ID:" GridPane.columnIndex="2" />
+            <Label text="Description:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="Car ID:" GridPane.columnIndex="4" />
+            <Label text="Cost ($):" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <TextField editable="false" GridPane.columnIndex="1" />
             <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField GridPane.columnIndex="3" />
@@ -90,15 +88,15 @@
             <TextField GridPane.columnIndex="5" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button mnemonicParsing="false" text="Button" />
+      <Button mnemonicParsing="false" text="Add Repair" />
       <Separator prefWidth="200.0" />
-      <Label text="Label" />
-      <GridPane>
+      <Label text="Search" />
+      <GridPane hgap="5.0" vgap="2.0">
          <children>
-            <Label text="Label" />
-            <Label text="Label" GridPane.columnIndex="2" />
-            <Label text="Label" GridPane.columnIndex="4" />
-            <Label text="Label" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Label text="Owner ID:" />
+            <Label text="Car ID:" GridPane.columnIndex="2" />
+            <Label text="Start Date:" GridPane.columnIndex="4" />
+            <Label text="End Date:" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <TextField editable="false" GridPane.columnIndex="1" />
             <TextField GridPane.columnIndex="3" />
             <DatePicker GridPane.columnIndex="5" />
@@ -115,10 +113,9 @@
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Button mnemonicParsing="false" text="Button" />
+      <Button mnemonicParsing="false" text="Query" />
       <TableView prefHeight="151.0" prefWidth="560.0">
         <columns>
           <TableColumn prefWidth="140.0" text="User ID" />
@@ -126,10 +123,16 @@
             <TableColumn prefWidth="279.0" text="Repair Reports" />
         </columns>
       </TableView>
-      <HBox prefHeight="15.0" prefWidth="560.0">
+      <HBox alignment="CENTER" prefHeight="15.0" prefWidth="560.0">
          <children>
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" text="Update">
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin></Button>
+            <Button mnemonicParsing="false" text="Delete">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
    </children>
