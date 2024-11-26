@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f576b7ba-0d34-4af2-b9a2-dc1842c35cc8" name="Changes" comment="DBUtil.java created, sql tables created, scene builder wireframe created">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/riveratumarava_comp228lab5/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/riveratumarava_comp228lab5/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
