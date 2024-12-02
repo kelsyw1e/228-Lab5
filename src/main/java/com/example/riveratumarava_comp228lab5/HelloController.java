@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class HelloController {
     @FXML
@@ -32,8 +31,6 @@ public class HelloController {
     @FXML
     private ComboBox<String> comboType;
     @FXML
-    private Button addOwnerCarButton;
-    @FXML
     private DatePicker dpRepair;
     @FXML
     private ComboBox<Owner> cbRepairOwner;
@@ -49,6 +46,14 @@ public class HelloController {
     private TextField tfRepairCost;
     @FXML
     private Button addRepairButton;
+    @FXML
+    private Button addOwnerButton;
+    @FXML
+    private Button deleteOwnerButton;
+    @FXML
+    private Button addCarButton;
+    @FXML
+    private Button deleteCarButton;
     @FXML
     private Button clearRepairButton;
     @FXML
@@ -71,12 +76,6 @@ public class HelloController {
     private TableColumn<Repair,String> tcRepairDate;
     @FXML
     private TableColumn<Repair,String> tcCost;
-    @FXML
-    private Button queryButton;
-    @FXML
-    private Button updateButton;
-    @FXML
-    private Button deleteButton;
 
     private String defaultValue = "Select car type";
 
@@ -84,12 +83,120 @@ public class HelloController {
     private Owner selectedOwner;
     private Car selectedCar;
 
+    private void fillOwnerForm(Owner owner) {
+        tfName.setText(owner.getName());
+        tfAddress.setText(owner.getAddress());
+        tfPhone.setText(owner.getPhone());
+        tfEmail.setText(owner.getEmail());
+
+        addOwnerButton.setText("Save Owner");
+        deleteOwnerButton.setDisable(false);
+    }
+
+    private void clearOwnerForm() {
+        tfName.clear();
+        tfAddress.clear();
+        tfPhone.clear();
+        tfEmail.clear();
+
+        addOwnerButton.setText("Add Owner");
+        selectedOwner = null;
+        deleteOwnerButton.setDisable(true);
+    }
+
     @FXML
     private void ownerSelectAction(ActionEvent actionEvent) {
+        selectedOwner = cbOwner.getValue();
+
+        if (selectedOwner == null) {
+            clearOwnerForm();
+        } else {
+            fillOwnerForm(selectedOwner);
+        }
+    }
+
+    @FXML
+    private void ownerDeleteAction(ActionEvent actionEvent) throws SQLException {
+        if (selectedOwner == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Input Error");
+            alert.setHeaderText("Form validation error");
+            alert.setContentText("Select car owner to remove");
+            alert.showAndWait();
+            return;
+        }
+
+        String sqlDeleteRepair = "DELETE FROM Repair WHERE ownerID = " + selectedOwner.getId();
+        String sqlDeleteOwner = "DELETE FROM Owner WHERE ownerID = " + selectedOwner.getId();
+
+        DBUtil.dbConnect();
+        DBUtil.statement.execute(sqlDeleteRepair);
+        DBUtil.statement.execute(sqlDeleteOwner);
+        if  (DBUtil.statement != null) DBUtil.statement.close();
+        DBUtil.dbDisconnect();
+
+        loadOwners();
+        clearTable();
+        clearOwnerForm();
+    }
+
+    private void fillCarForm(Car car) {
+        tfModel.setText(car.getModel());
+        tfMake.setText(car.getMake());
+        tfBuild.setText(car.getYear());
+        tfVIN.setText(car.getVin());
+        comboType.setValue(car.getType());
+
+        addCarButton.setText("Save Car");
+        deleteCarButton.setDisable(false);
+    }
+
+    private void clearCarForm() {
+        tfModel.clear();
+        tfMake.clear();
+        tfBuild.clear();
+        tfVIN.clear();
+        comboType.setValue(null);
+
+        addCarButton.setText("Add Car");
+        selectedCar = null;
+        deleteCarButton.setDisable(true);
     }
 
     @FXML
     private void carSelectAction(ActionEvent actionEvent) {
+        selectedCar = cbCar.getValue();
+
+        if (selectedCar == null) {
+            clearCarForm();
+        } else {
+            fillCarForm(selectedCar);
+        }
+    }
+
+    @FXML
+    private void carDeleteAction(ActionEvent actionEvent) throws SQLException {
+        if (selectedCar == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Input Error");
+            alert.setHeaderText("Form validation error");
+            alert.setContentText("Select car owner to remove");
+            alert.showAndWait();
+            return;
+        }
+
+        String sqlDeleteRepair = "DELETE FROM Repair WHERE carID = " + selectedCar.getId();
+        String sqlDeleteCar = "DELETE FROM Car WHERE carID = " + selectedCar.getId();
+
+        DBUtil.dbConnect();
+        DBUtil.statement.execute(sqlDeleteRepair);
+        DBUtil.statement.execute(sqlDeleteCar);
+        if  (DBUtil.statement != null) DBUtil.statement.close();
+        DBUtil.dbDisconnect();
+
+        loadCars();
+        clearTable();
+        clearCarForm();
     }
 
     private void populateTypeComboBox() {
@@ -101,27 +208,30 @@ public class HelloController {
         };
         comboType.getItems().addAll(types);
         comboType.setPromptText(defaultValue);
-
     }
 
     private void loadOwners() throws SQLException {
-        String sqlOwner = "Select ownerID, Name From Owner";
+        String sqlOwner = "Select * From Owner";
 
         cbRepairOwner.getItems().clear();
         cbSearchOwner.getItems().clear();
         cbOwner.getItems().clear();
 
         cbSearchOwner.getItems().add(null);
+        cbOwner.getItems().add(null);
 
         DBUtil.dbConnect();
         ResultSet rs = DBUtil.statement.executeQuery(sqlOwner);
         while (rs.next()) {
-            String name = rs.getString("Name");
+            String name = rs.getString("name");
             String id = rs.getString("ownerID");
+            String phone = rs.getString("phone");
+            String email = rs.getString("email");
+            String address = rs.getString("address");
 
-            cbRepairOwner.getItems().add(new Owner(id, name));
-            cbSearchOwner.getItems().add(new Owner(id, name));
-            cbOwner.getItems().add(new Owner(id, name));
+            cbRepairOwner.getItems().add(new Owner(id, name, address, phone, email));
+            cbSearchOwner.getItems().add(new Owner(id, name, address, phone, email));
+            cbOwner.getItems().add(new Owner(id, name, address, phone, email));
         }
 
         if  (DBUtil.statement != null) DBUtil.statement.close();
@@ -129,13 +239,14 @@ public class HelloController {
     }
 
     private void loadCars() throws SQLException {
-        String sqlOwner = "Select carID, make, model, buildYear From Car";
+        String sqlOwner = "Select * From Car";
 
         cbRepairCar.getItems().clear();
         cbSearchCar.getItems().clear();
         cbCar.getItems().clear();
 
         cbSearchCar.getItems().add(null);
+        cbCar.getItems().add(null);
 
         DBUtil.dbConnect();
         ResultSet rs = DBUtil.statement.executeQuery(sqlOwner);
@@ -143,11 +254,13 @@ public class HelloController {
             String make = rs.getString("make");
             String model = rs.getString("model");
             String year = rs.getString("buildYear");
+            String type = rs.getString("type");
+            String vin = rs.getString("vin");
             String id = rs.getString("carID");
 
-            cbRepairCar.getItems().add(new Car(id, make, model, year));
-            cbSearchCar.getItems().add(new Car(id, make, model, year));
-            cbCar.getItems().add(new Car(id, make, model, year));
+            cbRepairCar.getItems().add(new Car(id, make, model, year, vin, type));
+            cbSearchCar.getItems().add(new Car(id, make, model, year, vin, type));
+            cbCar.getItems().add(new Car(id, make, model, year, vin, type));
         }
 
         if  (DBUtil.statement != null) DBUtil.statement.close();
@@ -221,7 +334,7 @@ public class HelloController {
         return errors;
     }
 
-    private String validateCarOwnerData() {
+    private String validateOwnerData() {
         String errors = "";
         if (tfName.getText().isBlank()) {
             errors += "Owner's name is required.\n";
@@ -235,6 +348,11 @@ public class HelloController {
         if (tfEmail.getText().isBlank()) {
             errors += "Email is required.\n";
         }
+        return errors;
+    }
+
+    private String validateCarData() {
+        String errors = "";
         if (tfModel.getText().isBlank()) {
             errors += "Car model is required.\n";
         }
@@ -262,20 +380,23 @@ public class HelloController {
     }
 
     private void resetForms () {
-        tfName.clear();
-        tfAddress.clear();
-        tfPhone.clear();
-        tfEmail.clear();
-        tfModel.clear();
-        tfMake.clear();
-        tfBuild.clear();
-        tfVIN.clear();
-        comboType.setValue(null);
+        clearOwnerForm();
+        clearCarForm();
         clearRepairForm();
     }
 
-    public void addOwnerCarAction(ActionEvent actionEvent) throws SQLException {
-        String errors = validateCarOwnerData();
+    private String setOwner(String ownerId) {
+        String sqlOwnerForm = "UPDATE Owner SET name = '%s', address = '%s', phone = '%s', email = '%s' WHERE ownerID = %s";
+        return String.format(sqlOwnerForm, tfName.getText(), tfAddress.getText(), tfPhone.getText(), tfEmail.getText(), ownerId);
+    }
+
+    private String addOwner() {
+        String sqlOwnerForm = "INSERT INTO Owner (name, address, phone, email) VALUES ('%s', '%s', '%s', '%s')";
+        return String.format(sqlOwnerForm, tfName.getText(), tfAddress.getText(), tfPhone.getText(), tfEmail.getText());
+    }
+
+    public void addOwnerAction(ActionEvent actionEvent) throws SQLException {
+        String errors = validateOwnerData();
         if (!errors.isBlank()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Input Error");
@@ -285,25 +406,58 @@ public class HelloController {
             return;
         }
 
-        String sqlOwnerForm = "INSERT INTO Owner (name, address, phone, email) VALUES ('%s', '%s', '%s', '%s')";
-        String sqlOwner = String.format(sqlOwnerForm, tfName.getText(), tfAddress.getText(), tfPhone.getText(), tfEmail.getText());
-
-        String sqlCarForm = "INSERT INTO Car (make, model, vin, buildYear, type) VALUES ('%s', '%s', '%s', %s, '%s')";
-        String sqlCar = String.format(sqlCarForm, tfMake.getText(), tfModel.getText(), tfVIN.getText(), tfBuild.getText(), comboType.getValue());
+        String sqlOwner = selectedOwner != null ? setOwner(selectedOwner.getId()) : addOwner();
 
         DBUtil.dbConnect();
         DBUtil.statement.execute(sqlOwner);
-        DBUtil.statement.execute(sqlCar);
         if  (DBUtil.statement != null) DBUtil.statement.close();
         DBUtil.dbDisconnect();
 
         loadOwners();
-        loadCars();
 
-        resetForms();
+        clearOwnerForm();
+        clearTable();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Success");
-        alert.setHeaderText("Owner and car was added");
+        alert.setHeaderText("Owner has been successfully saved");
+        alert.showAndWait();
+    }
+
+    private String setCar(String carId) {
+        String sqlOwnerForm = "UPDATE Car SET make = '%s', model = '%s', vin = '%s', buildYear = %s, type = '%s' WHERE carID = %s";
+        return String.format(sqlOwnerForm, tfMake.getText(), tfModel.getText(), tfVIN.getText(), tfBuild.getText(), comboType.getValue(), carId);
+    }
+
+    private String addCar() {
+        String sqlCarForm = "INSERT INTO Car (make, model, vin, buildYear, type) VALUES ('%s', '%s', '%s', %s, '%s')";
+        return String.format(sqlCarForm, tfMake.getText(), tfModel.getText(), tfVIN.getText(), tfBuild.getText(), comboType.getValue());
+    }
+
+    public void addCarAction(ActionEvent actionEvent) throws SQLException {
+        String errors = validateCarData();
+        if (!errors.isBlank()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Input Error");
+            alert.setHeaderText("Form validation error");
+            alert.setContentText(errors);
+            alert.showAndWait();
+            return;
+        }
+
+        String sqlCar = selectedCar != null ? setCar(selectedCar.getId()) : addCar();
+
+        DBUtil.dbConnect();
+        DBUtil.statement.execute(sqlCar);
+        if  (DBUtil.statement != null) DBUtil.statement.close();
+        DBUtil.dbDisconnect();
+
+        loadCars();
+
+        clearCarForm();
+        clearTable();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText("Car has been successfully saved");
         alert.showAndWait();
     }
 
@@ -365,7 +519,7 @@ public class HelloController {
         DBUtil.dbDisconnect();
     }
 
-    private void fillRepairForm(Repair repair) throws ParseException {
+    private void fillRepairForm(Repair repair) {
         dpRepair.setValue(LocalDate.parse(repair.getRepairDate()));
         tfRepairCost.setText(repair.getCost());
         tfRepairDesc.setText(repair.getDescription());
@@ -402,6 +556,10 @@ public class HelloController {
 
     public void clearRepairAction(ActionEvent actionEvent){
         clearRepairForm();
+    }
+
+    private void clearTable() {
+        tvRepairTable.getItems().clear();
     }
 
     public void updateAction(ActionEvent actionEvent) throws SQLException,  ParseException {

@@ -48,9 +48,32 @@
             <TextField fx:id="tfModel" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <TextField fx:id="tfVIN" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <TextField fx:id="tfBuild" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+             <HBox alignment="CENTER" prefHeight="15.0" prefWidth="250.0" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                 <children>
+                     <Button fx:id="addOwnerButton" mnemonicParsing="false" onAction="#addOwnerAction" prefWidth="100.0" text="Add Owner">
+                         <HBox.margin>
+                             <Insets right="10.0" />
+                         </HBox.margin></Button>
+                     <Button fx:id="deleteOwnerButton" disable="true" mnemonicParsing="false" onAction="#ownerDeleteAction" prefHeight="26.0" prefWidth="100.0" text="Delete Owner">
+                         <HBox.margin>
+                             <Insets left="10.0" />
+                         </HBox.margin></Button>
+                 </children>
+             </HBox>
+             <HBox alignment="CENTER" prefHeight="15.0" prefWidth="250.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                 <children>
+                     <Button fx:id="addCarButton" mnemonicParsing="false" onAction="#addCarAction" prefWidth="100.0" text="Add Car">
+                         <HBox.margin>
+                             <Insets right="10.0" />
+                         </HBox.margin></Button>
+                     <Button fx:id="deleteCarButton" disable="true" mnemonicParsing="false" onAction="#carDeleteAction" prefHeight="26.0" prefWidth="100.0" text="Delete Car">
+                         <HBox.margin>
+                             <Insets left="10.0" />
+                         </HBox.margin></Button>
+                 </children>
+             </HBox>
          </children>
       </GridPane>
-      <Button fx:id="addOwnerCarButton" mnemonicParsing="false" onAction="#addOwnerCarAction" text="Save changes" />
       <Separator prefHeight="0.0" prefWidth="560.0" />
       <Label text="Repair" />
       <GridPane hgap="5.0" vgap="2.0">
