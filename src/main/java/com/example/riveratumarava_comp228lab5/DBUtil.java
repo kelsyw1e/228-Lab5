@@ -6,7 +6,7 @@ public class DBUtil {
     public static Statement statement = null;
     public static void dbConnect(){
         String dbURL = "jdbc:oracle:thin:@199.212.26.208:1521:SQLD";
-        String username = "COMP228_F24_sha_28"; // replace with username
+        String username = "COMP228_F24_sha_22"; // replace with username
         String password = "password"; // replace with password
         try {
             connection = DriverManager.getConnection(dbURL,username,password);

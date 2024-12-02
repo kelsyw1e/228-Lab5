@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f576b7ba-0d34-4af2-b9a2-dc1842c35cc8" name="Changes" comment="DBUtil.java created, sql tables created, scene builder wireframe created">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/Owner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/Owner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/DBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/DBUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/riveratumarava_comp228lab5/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/riveratumarava_comp228lab5/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -60,10 +63,10 @@
     "Application.HelloApplication.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "update-ui",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/nadyatumareva/Dev/228-Lab5",
+    "last_opened_file_path": "C:/Users/keanr/Documents/COMP228/ojdbc11.jar",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3908046",
