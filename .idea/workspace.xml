@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f576b7ba-0d34-4af2-b9a2-dc1842c35cc8" name="Changes" comment="DBUtil.java created, sql tables created, scene builder wireframe created">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/Car.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/Owner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/Repair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/DBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/DBUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/riveratumarava_comp228lab5/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/riveratumarava_comp228lab5/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/riveratumarava_comp228lab5/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,5 +148,14 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="DBUtil.java created, sql tables created, scene builder wireframe created" />
     <option name="LAST_COMMIT_MESSAGE" value="DBUtil.java created, sql tables created, scene builder wireframe created" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="owner.getId()" language="JAVA" />
+        <watch expression="repair.getOwnerId()" language="JAVA" />
+        <watch expression="owner.getId() == repair.getOwnerId()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

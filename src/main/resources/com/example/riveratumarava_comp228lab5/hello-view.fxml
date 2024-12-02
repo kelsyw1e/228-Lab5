@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="900.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.riveratumarava_comp228lab5.HelloController">
+<VBox alignment="CENTER" prefHeight="900.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.riveratumarava_comp228lab5.HelloController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
@@ -37,7 +37,9 @@
             <Label text="VIN:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label text="Build Year:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label text="Type:" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <ComboBox fx:id="comboType" onAction="#typeComboBox" prefHeight="25.0" prefWidth="172.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+             <ComboBox fx:id="cbOwner" onAction="#ownerSelectAction" prefHeight="25.0" prefWidth="172.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+             <ComboBox fx:id="cbCar" onAction="#carSelectAction" prefHeight="25.0" prefWidth="172.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+            <ComboBox fx:id="comboType" prefHeight="25.0" prefWidth="172.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <TextField fx:id="tfName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="tfAddress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="tfPhone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -48,7 +50,7 @@
             <TextField fx:id="tfBuild" GridPane.columnIndex="3" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button fx:id="addOwnerCarButton" mnemonicParsing="false" onAction="#addOwnerCarAction" text="Add Owner &amp; Car" />
+      <Button fx:id="addOwnerCarButton" mnemonicParsing="false" onAction="#addOwnerCarAction" text="Save changes" />
       <Separator prefHeight="0.0" prefWidth="560.0" />
       <Label text="Repair" />
       <GridPane hgap="5.0" vgap="2.0">
@@ -77,7 +79,18 @@
             <TextField fx:id="tfRepairCost" GridPane.columnIndex="5" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button fx:id="addRepairButton" mnemonicParsing="false" onAction="#addRepairAction" text="Add Repair" />
+       <HBox alignment="CENTER" prefHeight="15.0" prefWidth="560.0">
+           <children>
+               <Button fx:id="addRepairButton" mnemonicParsing="false" onAction="#addRepairAction" text="Add Repair">
+                   <HBox.margin>
+                       <Insets right="10.0" />
+                   </HBox.margin></Button>
+               <Button fx:id="clearRepairButton" mnemonicParsing="false" onAction="#clearRepairAction" text="Clear Repair">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></Button>
+           </children>
+       </HBox>
       <Separator prefWidth="200.0" />
       <Label text="Search" />
       <GridPane hgap="5.0" vgap="2.0">
@@ -105,11 +118,13 @@
          </rowConstraints>
       </GridPane>
       <Button fx:id="queryButton" mnemonicParsing="false" onAction="#queryAction" text="Search" />
-      <TableView prefHeight="151.0" prefWidth="560.0">
+      <TableView fx:id="tvRepairTable" prefHeight="151.0" prefWidth="560.0">
         <columns>
-          <TableColumn prefWidth="140.0" text="User ID" />
-          <TableColumn prefWidth="140.0" text="Car ID" />
-            <TableColumn prefWidth="279.0" text="Repair Reports" />
+            <TableColumn fx:id="tcOwner" prefWidth="200.0" text="Owner" />
+            <TableColumn fx:id="tcCar" prefWidth="200.0" text="Car" />
+            <TableColumn fx:id="tcRepairDate" prefWidth="200.0" text="Repair Date" />
+            <TableColumn fx:id="tcCost" prefWidth="50.0" text="Cost" />
+            <TableColumn fx:id="tcDescription" prefWidth="279.0" text="Description" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" prefHeight="15.0" prefWidth="560.0">
